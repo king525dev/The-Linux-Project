@@ -1,0 +1,18 @@
+site_name: The Linux Project
+site_description: Three Node Proxmox cluster running self‑hosted FOSS services
+docs_dir: Documentation
+extra_css:
+  - https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap
+  - https://king525dev.github.io/silicon-zen/library/sz.css
+  - assets/sz/sz-bridge.css
+extra_javascript:
+  - https://king525dev.github.io/silicon-zen/library/sz.js
+theme:
+  name: material
+  custom_dir: overrides
+nav:
+  - Home: index.md
+  - Topology: topology.md
+  - Hardware: hardware.md
+  - VMs & Containers: vms-and-containers.md
+  - Services: services.md

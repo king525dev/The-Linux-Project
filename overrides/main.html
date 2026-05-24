@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+{% endblock %}
+
+{% block content %}
+  <!-- Silicon Zen Top Bar -->
+  <nav class="sz-topnav">
+    <a class="sz-topnav__logo" href="{{ nav.homepage.url | url }}">
+      The <span>Linux</span> Project Documentation
+    </a>
+  </nav>
+
+  <!-- Main content with Silicon Zen container -->
+  <main class="sz-container sz-mt-6 sz-mb-8">
+    {{ page.content }}
+  </main>
+
+  <!-- Optional dock for quick links (remove if unwanted) -->
+  <nav class="sz-dock">
+    {% for nav_item in nav %}
+      {% if nav_item.children %}
+        <a href="{{ nav_item.children[0].url | url }}" class="sz-dock__item">{{ nav_item.title[:3] }}</a>
+      {% else %}
+        <a href="{{ nav_item.url | url }}" class="sz-dock__item">{{ nav_item.title[:3] }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <!-- Theme and dock activation -->
+  <script>
+    // Set initial theme from saved preference or default
+    const saved = localStorage.getItem('sz-theme');
+    if (saved) {
+      document.documentElement.dataset.szTheme = saved;
+    } else {
+      document.documentElement.dataset.szTheme = 'parchment';
+    }
+    document.querySelector('[data-sz-theme-toggle]').addEventListener('click', () => {
+      const newTheme = document.documentElement.dataset.szTheme === 'obsidian' ? 'parchment' : 'obsidian';
+      document.documentElement.dataset.szTheme = newTheme;
+      localStorage.setItem('sz-theme', newTheme);
+    });
+    // Highlight active nav item
+    const currentPage = "{{ page.url }}";
+    document.querySelectorAll('.sz-topnav__links a, .sz-dock__item').forEach(link => {
+      if (link.getAttribute('href') === currentPage) link.classList.add('is-active');
+    });
+  </script>
+{% endblock %}

@@ -176,119 +176,293 @@ dv.container.appendChild(board);
 ## Directory
 
 ```dataviewjs  
-const currentFile = dv.current().file.path;  
-const currentFolder = currentFile.split("/").slice(0, -1).join("/");  
-  
-// get all files inside current folder  
-const items = app.vault.getFiles()  
-.filter(f => f.path.startsWith(currentFolder + "/"))  
-.filter(f => f.path !== currentFile)  
-.sort((a, b) => a.path.localeCompare(b.path));  
-  
-const container = dv.el("div", "");  
-container.style.display = "grid";  
-container.style.gap = "12px";  
-  
-// collect folders  
-const folders = new Set();  
-  
-for (const file of items) {  
-const relative = file.path.replace(currentFolder + "/", "");  
-const parts = relative.split("/");  
-  
-if (parts.length > 1) {  
-folders.add(parts[0]);  
-}  
-}  
-  
-// render folders  
-for (const folder of [...folders].sort()) {  
-  
-const section = document.createElement("div");  
-  
-section.style.padding = "14px";  
-section.style.borderRadius = "14px";  
-section.style.background = "var(--background-secondary)";  
-section.style.border = "1px solid var(--background-modifier-border)";  
-  
-section.innerHTML += `  
-<div style="  
-font-weight:700;  
-margin-bottom:10px;  
-font-size:1.05em;  
-">  
-📁 ${folder}  
-</div>  
-`;  
-  
-items  
-.filter(f => {  
-const relative = f.path.replace(currentFolder + "/", "");  
-return relative.startsWith(folder + "/");  
-})  
-.forEach(f => {  
-  
-const link = document.createElement("a");  
-  
-link.href = f.path;  
-link.className = "internal-link";  
-link.textContent = f.basename;  
-  
-link.style.display = "block";  
-link.style.padding = "6px 0";  
-link.style.textDecoration = "none";  
-link.style.color = "var(--text-normal)";  
-  
-section.appendChild(link);  
-});  
-  
-container.appendChild(section);  
-}  
-  
-// root-level files  
-const rootFiles = items.filter(f => {  
-const relative = f.path.replace(currentFolder + "/", "");  
-return !relative.includes("/");  
-});  
-  
-if (rootFiles.length) {  
-  
-const notes = document.createElement("div");  
-  
-notes.style.padding = "14px";  
-notes.style.borderRadius = "14px";  
-notes.style.background = "var(--background-secondary)";  
-notes.style.border = "1px solid var(--background-modifier-border)";  
-  
-notes.innerHTML += `  
-<div style="  
-font-weight:700;  
-margin-bottom:10px;  
-font-size:1.05em;  
-">  
-📄 Notes  
-</div>  
-`;  
-  
-rootFiles.forEach(f => {  
-  
-const link = document.createElement("a");  
-  
-link.href = f.path;  
-link.className = "internal-link";  
-link.textContent = f.basename;  
-  
-link.style.display = "block";  
-link.style.padding = "6px 0";  
-link.style.textDecoration = "none";  
-link.style.color = "var(--text-normal)";  
-  
-notes.appendChild(link);  
-});  
-  
-container.appendChild(notes);  
-}  
+const currentFile = dv.current().file.path;
+
+const currentFolder = currentFile
+    .split("/")
+    .slice(0, -1)
+    .join("/");
+
+// CONFIG
+const ignoreFolders = [
+    "docsVenv",
+    ".obsidian"
+];
+
+const ignoreFiles = [
+    "Project Home"
+];
+
+// get files
+const items = app.vault.getFiles()
+    .filter(f => f.path.startsWith(currentFolder + "/"))
+    .filter(f => f.path !== currentFile)
+    .sort((a, b) => a.path.localeCompare(b.path));
+
+// container
+const container = dv.el("div", "");
+
+container.style.display = "flex";
+container.style.flexDirection = "column";
+container.style.gap = "14px";
+
+// collect folders
+const folders = new Set();
+
+for (const file of items) {
+
+    const relative =
+        file.path.replace(currentFolder + "/", "");
+
+    const parts = relative.split("/");
+
+    if (parts.length > 1) {
+
+        const folder = parts[0];
+
+        if (!ignoreFolders.includes(folder)) {
+            folders.add(folder);
+        }
+    }
+}
+
+// helper: create links
+function createLink(file) {
+
+    const link = document.createElement("a");
+
+    link.href = file.path;
+
+    link.className = "internal-link";
+
+    link.style.display = "flex";
+    link.style.alignItems = "center";
+    link.style.gap = "10px";
+
+    link.style.padding = "10px 12px";
+
+    link.style.borderRadius = "10px";
+
+    link.style.marginBottom = "6px";
+
+    link.style.textDecoration = "none";
+
+    link.style.color = "var(--text-normal)";
+
+    link.style.transition = "all 0.12s ease";
+
+    link.innerHTML = `
+        <span style="opacity:0.8;">📄</span>
+        <span>${file.basename}</span>
+    `;
+
+    link.onmouseenter = () => {
+
+        link.style.background =
+            "var(--background-modifier-hover)";
+    };
+
+    link.onmouseleave = () => {
+
+        link.style.background = "transparent";
+    };
+
+    return link;
+}
+
+// accordion renderer
+function createAccordion(title, icon, files) {
+
+    const details = document.createElement("details");
+
+    details.style.border =
+        "1px solid var(--background-modifier-border)";
+
+    details.style.borderRadius = "14px";
+
+    details.style.background =
+        "var(--background-secondary)";
+
+    details.style.padding = "4px 10px";
+
+    details.style.transition = "all 0.15s ease";
+
+    // sprint metadata
+    const sprintFiles = files.filter(f => {
+
+        const cache =
+            app.metadataCache.getFileCache(f);
+
+        return cache?.frontmatter?.type === "sprint";
+    });
+
+    const activeSprint =
+        sprintFiles.some(f => {
+
+            const cache =
+                app.metadataCache.getFileCache(f);
+
+            return cache?.frontmatter?.active === true;
+        });
+
+    // auto-open active folders
+    if (activeSprint) {
+        details.open = true;
+    }
+
+    // status badge
+    let badge = "⚫";
+
+    if (activeSprint) {
+        badge = "🟢";
+    }
+    else if (sprintFiles.length > 0) {
+        badge = "🟡";
+    }
+
+    details.onmouseenter = () => {
+
+        details.style.borderColor =
+            "var(--interactive-accent)";
+    };
+
+    details.onmouseleave = () => {
+
+        details.style.borderColor =
+            "var(--background-modifier-border)";
+    };
+
+    // summary
+    const summary = document.createElement("summary");
+
+    summary.style.cursor = "pointer";
+
+    summary.style.listStyle = "none";
+
+    summary.style.padding = "14px 6px";
+
+    summary.style.fontWeight = "700";
+
+    summary.style.fontSize = "1.05em";
+
+    summary.style.display = "flex";
+
+    summary.style.justifyContent = "space-between";
+
+    summary.style.alignItems = "center";
+
+    const activeIndicator =
+        activeSprint ? "🔥" : "";
+
+    summary.innerHTML = `
+    <div style="
+        display:flex;
+        align-items:center;
+        gap:10px;
+    ">
+
+        <span>
+            ${title}
+        </span>
+
+        <span style="
+            opacity:0.65;
+            font-size:0.9em;
+        ">
+            (${files.length})
+        </span>
+    </div>
+
+    <div style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+    ">
+        <span>${activeIndicator}</span>
+        <span>${badge}</span>
+    </div>
+    `;
+
+    details.appendChild(summary);
+
+    // content
+    const content = document.createElement("div");
+
+    content.style.padding =
+        "8px 2px 12px 2px";
+
+    files.forEach(f => {
+
+        content.appendChild(createLink(f));
+    });
+
+    details.appendChild(content);
+
+    return details;
+}
+
+// render folders
+for (const folder of [...folders].sort()) {
+
+    const folderFiles = items
+
+        .filter(f => {
+
+            const relative =
+                f.path.replace(currentFolder + "/", "");
+
+            return relative.startsWith(folder + "/");
+        })
+
+        .filter(f =>
+            !ignoreFiles.includes(f.basename)
+        );
+
+    if (folderFiles.length > 0) {
+
+        container.appendChild(
+            createAccordion(
+                folder,
+                "📁",
+                folderFiles
+            )
+        );
+    }
+}
+
+// ROOT NOTES FIX
+const rootFiles = items
+
+    .filter(f => {
+
+        const relative =
+            f.path.replace(currentFolder + "/", "");
+
+        return !relative.includes("/");
+    })
+
+    .filter(f =>
+        !ignoreFiles.includes(f.basename)
+    );
+
+// render root notes
+if (rootFiles.length > 0) {
+
+    container.appendChild(
+        createAccordion(
+            "Notes",
+            "📝",
+            rootFiles
+        )
+    );
+}
+
+// render final container
+dv.container.appendChild(container);
 ```
+
+
+
 ## Resources/Links
 - [FUTO Self Managed Guide](https://wiki.futo.org/index.php/Introduction_to_a_Self_Managed_Life:_a_13_hour_%26_28_minute_presentation_by_FUTO_software)
 

@@ -1,0 +1,128 @@
+/* sz-bridge.css - Make MkDocs Material output blend with Silicon Zen */
+
+/* Reset Material's default background and fonts */
+body {
+     margin: 0;
+     font-family: var(--sz-font-serif) !important;
+     background: var(--sz-bg) !important;
+     color: var(--sz-text) !important;
+}
+
+/* Disable Material's header, footer, and sidebars (they're replaced by sz-topnav/dock) */
+.md-header,
+.md-footer,
+.md-tabs,
+.md-search,
+.sz-topnav__links{
+     display: none !important;
+}
+
+/* Styled Material sidebar with Silicon Zen */
+.md-sidebar {
+     background: var(--sz-surface) !important;
+     border-right: 1px solid var(--sz-border-dim) !important;
+     font-family: var(--sz-font-mono) !important;
+}
+
+.md-sidebar .md-nav__title {
+     color: var(--sz-teal) !important;
+     font-family: var(--sz-font-mono);
+     text-transform: uppercase;
+     letter-spacing: 1px;
+}
+
+.md-sidebar .md-nav__link {
+     color: var(--sz-text-dim) !important;
+     font-size: 12px;
+     transition: color 0.15s;
+}
+
+.md-sidebar .md-nav__link:hover,
+.md-sidebar .md-nav__link--active {
+     color: var(--sz-teal) !important;
+}
+
+.md-sidebar .md-nav__item--active > .md-nav__link {
+     border-left: 2px solid var(--sz-teal);
+     padding-left: calc(var(--sz-grid)*2);
+}
+
+/* Make all content use your serif/mono fonts */
+.md-typeset {
+     font-family: var(--sz-font-serif) !important;
+     color: var(--sz-text) !important;
+}
+
+.md-typeset h1 { font-size: clamp(1.8rem, 3vw, 2.4rem) !important; }
+.md-typeset h2 { font-size: clamp(1.3rem, 2.2vw, 1.75rem) !important; }
+.md-typeset h3 {
+     font-family: var(--sz-font-mono) !important;
+     font-size: 0.8rem !important;
+     text-transform: uppercase;
+     letter-spacing: 1.5px;
+     color: var(--sz-text-dim) !important;
+}
+
+/* Style tables to match sz-table */
+.md-typeset table:not([class]) {
+     border-collapse: collapse;
+     width: 100%;
+     font-family: var(--sz-font-mono);
+     font-size: 12px;
+     background: var(--sz-surface);
+     border: 1px solid var(--sz-border);
+}
+.md-typeset table:not([class]) th {
+     text-align: left;
+     padding: 8px 12px;
+     border-bottom: 2px solid var(--sz-teal);
+     color: var(--sz-text-dim);
+     text-transform: uppercase;
+     letter-spacing: 1px;
+}
+.md-typeset table:not([class]) td {
+     padding: 12px;
+     border-bottom: 1px solid var(--sz-border-dim);
+     color: var(--sz-text);
+}
+
+/* Inline code */
+.md-typeset code {
+     font-family: var(--sz-font-mono);
+     background: var(--sz-surface-alt);
+     border: 1px solid var(--sz-border-dim);
+     color: var(--sz-teal);
+     padding: 1px 6px;
+}
+
+/* Code blocks */
+.md-typeset pre > code {
+     background: var(--sz-cli-bg);
+     color: var(--sz-cli-text);
+     border: 1px solid var(--sz-border);
+}
+
+/* Admonitions as callouts */
+.md-typeset .admonition {
+     border-left: 3px solid var(--sz-teal) !important;
+     background: rgba(91,168,160,0.07) !important;
+     font-family: var(--sz-font-serif);
+     border-radius: 0;
+}
+.md-typeset .admonition.note { border-left-color: var(--sz-teal) !important; }
+.md-typeset .admonition.warning { border-left-color: var(--sz-amber) !important; }
+.md-typeset .admonition.danger { border-left-color: var(--sz-red) !important; }
+
+/* Ensure scroll-reveal works on content */
+.sz-reveal { opacity: 0; transform: translateY(16px); }
+.sz-reveal.is-visible { opacity: 1; transform: none; }
+
+a.sz-topnav__logo{
+     text-decoration: none;
+     color: var(--sz-text);
+}
+
+a.sz-topnav__logo:hover{
+     text-decoration: none;
+     color: var(--sz-text);
+}
