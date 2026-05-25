@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <style>
+      text { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+      .label { font-size: 12px; fill: #0D0D0D; }
+      .ip { font-size: 10px; fill: #5BA8A0; }
+      .host-label { font-size: 13px; font-weight: bold; fill: #0D0D0D; }
+      .ct-label { font-size: 10px; fill: #0D0D0D; }
+      .ct-box { fill: #F0F0ED; stroke: #5BA8A0; stroke-width: 1.5; stroke-dasharray: 4,2; }
+      .host-box { fill: #FFFFFF; stroke: #333333; stroke-width: 2; }
+      .router-box { fill: #5BA8A0; stroke: #3D7A74; stroke-width: 2; }
+      .internet-cloud { fill: none; stroke: #5BA8A0; stroke-width: 2; }
+      .line { stroke: #333333; stroke-width: 2; }
+      .line-dashed { stroke: #888888; stroke-width: 1.5; stroke-dasharray: 5,3; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F4F4F1" />
+
+  <!-- Internet Cloud -->
+  <ellipse cx="400" cy="50" rx="60" ry="25" class="internet-cloud" />
+  <ellipse cx="370" cy="45" rx="30" ry="18" fill="#F4F4F1" stroke="#5BA8A0" stroke-width="2" />
+  <ellipse cx="430" cy="45" rx="30" ry="18" fill="#F4F4F1" stroke="#5BA8A0" stroke-width="2" />
+  <ellipse cx="400" cy="35" rx="35" ry="18" fill="#F4F4F1" stroke="#5BA8A0" stroke-width="2" />
+  <text x="400" y="55" text-anchor="middle" class="label" fill="#0D0D0D">Internet</text>
+
+  <!-- Line from Internet to Router -->
+  <line x1="400" y1="75" x2="400" y2="110" class="line" />
+
+  <!-- GL.iNet Router -->
+  <rect x="300" y="110" width="200" height="45" class="router-box" rx="4" />
+  <text x="400" y="130" text-anchor="middle" class="label" fill="#0D0D0D" font-weight="bold">GL.iNet Router</text>
+  <text x="400" y="145" text-anchor="middle" class="ip" fill="#0D0D0D">192.168.50.1</text>
+
+  <!-- Lines from Router to Nodes -->
+  <line x1="300" y1="133" x2="180" y2="210" class="line" />
+  <line x1="500" y1="133" x2="620" y2="210" class="line" />
+
+  <!-- Node-1 (Proxmox) -->
+  <rect x="60" y="210" width="240" height="340" class="host-box" rx="6" />
+  <text x="180" y="235" text-anchor="middle" class="host-label">node-1 (Proxmox)</text>
+  <text x="180" y="252" text-anchor="middle" class="ip">192.168.50.100</text>
+
+  <!-- CTs inside node-1 -->
+  <rect x="80" y="270" width="200" height="30" class="ct-box" />
+  <text x="180" y="289" text-anchor="middle" class="ct-label">Samba CT</text>
+
+  <rect x="80" y="310" width="200" height="30" class="ct-box" />
+  <text x="180" y="329" text-anchor="middle" class="ct-label">Joplin Server CT</text>
+
+  <rect x="80" y="350" width="200" height="30" class="ct-box" />
+  <text x="180" y="369" text-anchor="middle" class="ct-label">Homepage CT</text>
+
+  <rect x="80" y="390" width="200" height="30" class="ct-box" />
+  <text x="180" y="409" text-anchor="middle" class="ct-label">Navidrome CT</text>
+
+  <rect x="80" y="430" width="200" height="30" class="ct-box" />
+  <text x="180" y="449" text-anchor="middle" class="ct-label">Pi-hole CT</text>
+
+  <rect x="80" y="470" width="200" height="30" class="ct-box" />
+  <text x="180" y="489" text-anchor="middle" class="ct-label">Ollama CT</text>
+
+  <rect x="80" y="510" width="200" height="30" class="ct-box" />
+  <text x="180" y="529" text-anchor="middle" class="ct-label">Jellyfin CT</text>
+
+  <!-- Node-2 (Ubuntu Desktop) -->
+  <rect x="500" y="210" width="240" height="160" class="host-box" rx="6" />
+  <text x="620" y="235" text-anchor="middle" class="host-label">node-2 (Ubuntu Desktop)</text>
+  <text x="620" y="252" text-anchor="middle" class="ip">192.168.50.101</text>
+
+  <!-- Ubuntu Server VM inside node-2 -->
+  <rect x="520" y="270" width="200" height="80" class="ct-box" />
+  <text x="620" y="295" text-anchor="middle" class="ct-label">Ubuntu Server VM</text>
+  <text x="620" y="315" text-anchor="middle" class="ip">192.168.50.176</text>
+
+  <!-- Legend / Note -->
+  <text x="40" y="590" class="label" fill="#888888">Flat /24 network — no VLANs</text>
+</svg>

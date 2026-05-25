@@ -2,22 +2,24 @@
 
 ## Computers
 
-| Hostname | Role               | CPU                           | RAM       | Storage    | IP                       |
-| -------- | ------------------ | ----------------------------- | --------- | ---------- | ------------------------ |
-| pve-1    | Hypervisor (Node1) | Intel Core i5‑3470T (3rd Gen) | 8 GB DDR3 | 256 GB SSD | 192.168.50.100           |
-| pve-2    | Hypervisor (Node2) | Intel Core i5‑3470T (3rd Gen) | 8 GB DDR3 | 256 GB SSD | 192.168.50.101 (planned) |
+| Hostname | Role                  | Model                   | CPU                                | RAM          | Storage       | IP                       | Full Specifications                                                                                |
+| -------- | --------------------- | ----------------------- | ---------------------------------- | ------------ | ------------- | ------------------------ | -------------------------------------------------------------------------------------------------- |
+| node-1   | Hypervisor (Node1)    | Dell OptiPlex 7010 USFF | Intel Core i5‑3470T (3rd Gen)      | 8 GB DDR3    | 256 GB SSD    | 192.168.50.100           | [Dell OptiPlex 7010 USFF](https://www.hardware-corner.net/desktop-models/Dell-OptiPlex-7010-USFF/) |
+| node-2   | Linux Desktop         | Dell OptiPlex 7010 USFF | Intel Core i5‑3470T (3rd Gen)      | 8 GB DDR3    | 512 GB SSD    | 192.168.50.101 (planned) | [Dell OptiPlex 7010 USFF](https://www.hardware-corner.net/desktop-models/Dell-OptiPlex-7010-USFF/) |
+| node-3   | Hypervisor<br>(Node1) | Fujitsu Esprimo P5011   | Intel Core <br>i5-11500 (11th Gen) | 8GB <br>DDR4 | 256 GB<br>SSD | (unplanned)              | [Fujitsu-Esprimo-P5011](https://www.hardware-corner.net/desktop-models/Fujitsu-Esprimo-P5011/)     |
+|          |                       |                         |                                    |              |               |                          |                                                                                                    |
 
-Both are Dell OptiPlex 7010 Ultra Small Form Factor.
 
 ## Networking
 
-| Device | Model | Role |
-|--------|-------|------|
-| Router | GL.iNet GL‑SFT1200 (Opal) | Internet gateway, firewall, DHCP |
+| Device | Model                                    | Role                             |
+| ------ | ---------------------------------------- | -------------------------------- |
+| Router | GL.iNet GL‑SFT1200 (Opal)                | Internet gateway, firewall, DHCP |
+| Router | N2940 Quad Core Firewall Micro Appliance | (unplanned)                      |
 
 ## Storage Layout
 
-- **pve-1** uses its local SSD for Proxmox OS, VM/CT images, and a dedicated directory:
+- **node-1** uses its local SSD for Proxmox OS, VM/CT images, and a dedicated directory:
   `/mnt/storage` → used for media, shared files, and container bind‑mounts.
 
 ## Potential Upgrades

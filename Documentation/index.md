@@ -26,7 +26,7 @@ Personal infrastructure environment for self‑hosting, learning, and fun.
 - **Joplin Server** – private note sync
 - **Homepage** – unified service dashboard
 - **Pi‑hole** – network‑wide ad blocking
-- **Ollama** – local LLM experimentation
+- **llama.ccp** – local LLM experimentation
 - **Ubuntu Server** – development VM
 
 ## Quick Links
@@ -41,7 +41,6 @@ Personal infrastructure environment for self‑hosting, learning, and fun.
 | Tailscale admin | [http://100.86.165.59:5252/](http://100.86.165.59:5252/) | `http://west-cordylus.ts.net/` |
 
 > **Secrets and credentials are never stored in this documentation.**
-> Keep them in a local password manager or `.env` files.
 
 ## Doc Links
 
