@@ -1,7 +1,7 @@
 ---
 type: sprint
-project: Active Projects
-status: active
+project: The Linux Project
+status: done
 start: 2026-05-24
 end: 2026-05-31
 active: "true"
@@ -22,9 +22,9 @@ templater true
 
 ## Sprint Backlog
 
-- [ ] Draw network diagram #project #TheLinuxProject 📅 2026-05-31
-- [ ] Update all occurrences of number of nodes #project #TheLinuxProject 📅 2026-05-31
-- [ ] Update goals 📅 2026-05-31
+- [x] Draw network diagram #project #TheLinuxProject 📅 2026-05-31 ✅ 2026-05-26
+- [x] Update all occurrences of number of nodes #project #TheLinuxProject 📅 2026-05-31 ✅ 2026-05-26
+- [x] Update goals 📅 2026-05-31 ✅ 2026-05-26
 
 ## Notes
 

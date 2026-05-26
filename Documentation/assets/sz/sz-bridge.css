@@ -19,14 +19,22 @@ body {
 
 /* Styled Material sidebar with Silicon Zen */
 .md-sidebar {
-     background: var(--sz-surface) !important;
-     border-right: 1px solid var(--sz-border-dim) !important;
+     background: transparent !important;
      font-family: var(--sz-font-mono) !important;
+}
+
+.md-sidebar .md-sidebar--primary{
+     border-right: 1px solid var(--sz-border-dim) !important;
+}
+
+.md-sidebar .md-sidebar--secondary{
+     border-left: 1px solid var(--sz-border-dim) !important;
 }
 
 .md-sidebar .md-nav__title {
      color: var(--sz-teal) !important;
      font-family: var(--sz-font-mono);
+     background: transparent !important;
      text-transform: uppercase;
      letter-spacing: 1px;
 }

@@ -1,7 +1,7 @@
 ---
 type: sprint
-project: Active Projects
-status: pending
+project: The Linux Project
+status: active
 start: 2026-05-24
 end: 2026-06-04
 active: "true"
@@ -22,8 +22,8 @@ templater true
 
 ## Sprint Backlog
 
-- [ ] Install new SSD  #project #TheLinuxProject 📅 2026-05-04
-- [ ] Install Ubuntu #project #TheLinuxProject 📅 2026-05-04
+- [ ] Install new SSD  #project #TheLinuxProject 📅 2026-06-04
+- [ ] Install Ubuntu #project #TheLinuxProject 📅 2026-06-04
 ## Notes
 
 -
