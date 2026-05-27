@@ -294,7 +294,7 @@ fastfetch
 
 - Inside Ubuntu VM:
 
- ```bash
+```bash
 ping google.com
 ```
 
@@ -304,7 +304,7 @@ If it works, your networking bridge is correct.
 
 8. **Optional: Install Proxmox Updates**
 
- ```bash
+```bash
 sudo apt update \&\& sudo apt full-upgrade -y
 ```
 
@@ -328,4 +328,11 @@ sudo apt update \&\& sudo apt full-upgrade -y
 ## Future Implementations
 
 - Use molt bot to create post and updates on a different account about projects and that on Instagram or inbetablog posts
+
+## Questions
+
+- What is your router structure?
+- Do i need a protectli router with pfsense?
+- I want to host websites and webapps on my project, is that feasible?
+
 

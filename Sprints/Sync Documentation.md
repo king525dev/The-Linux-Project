@@ -6,6 +6,8 @@ start: 2026-05-24
 end: 2026-05-31
 active: "true"
 ---
+[[The Linux Project]]
+
 ```button
 name Sync Sprint To Calendar
 type append template

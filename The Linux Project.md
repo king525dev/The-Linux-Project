@@ -7,6 +7,8 @@
 > **Type:** Project  
 > **Created:** 2026-05-23
 
+[[Projects Home]]
+
 ## Objective 
 
 Set-up a three node local network that can host projects and perform services for me.
@@ -186,7 +188,8 @@ const currentFolder = currentFile
 // CONFIG
 const ignoreFolders = [
     "docsVenv",
-    ".obsidian"
+    ".obsidian",
+    "overrides"
 ];
 
 const ignoreFiles = [
@@ -460,6 +463,7 @@ if (rootFiles.length > 0) {
 // render final container
 dv.container.appendChild(container);
 ```
+
 
 
 
