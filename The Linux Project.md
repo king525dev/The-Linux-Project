@@ -480,5 +480,5 @@ dv.container.appendChild(container);
 
 # Notes
 
-Ideas, discoveries, thoughts, scratch notes, etc.
+- **Budget:** [[Linux Project Expenses.usheet]]
 

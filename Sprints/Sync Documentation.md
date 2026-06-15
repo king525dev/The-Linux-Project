@@ -4,7 +4,7 @@ project: The Linux Project
 status: done
 start: 2026-05-24
 end: 2026-05-31
-active: "true"
+active: "false"
 ---
 [[The Linux Project]]
 
