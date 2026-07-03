@@ -29,3 +29,5 @@
 | RAM | 2×8 GB DDR3‑1600 (max 16 GB) | Run more VMs/CTs and heavier services |
 | Storage | 1‑2 TB SATA SSD or USB 3.0 external HDD | More space for media and backups |
 | Router | Intel N100 fanless PC (e.g., Protectli) | Advanced firewall, VLANs, VPN endpoint |
+
+PC Benching: [PassMark Software - PC Benchmark and Test Software](https://www.passmark.com/)
