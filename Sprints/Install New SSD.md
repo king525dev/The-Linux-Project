@@ -1,7 +1,7 @@
 ---
 type: sprint
 project: The Linux Project
-status: active
+status: done
 start: 2026-05-24
 end: 2026-06-24
 active: "true"
@@ -13,10 +13,11 @@ action Run Sprint Calendar Sync
 templater true
 ```
 
+
 [[The Linux Project]]
 
 
-# Sprint: Start-up Linux Desktop
+# Sprint: Install New SSD
 
 ## Objective
 
@@ -25,11 +26,10 @@ templater true
 ## Sprint Backlog
 
 - [x] Install new SSD #project #TheLinuxProject 📅 2026-06-04 ✅ 2026-06-03
-- [ ] Install Ubuntu #project #TheLinuxProject 📅 2026-06-20
 ## Notes
 
 -
 
 ## Deliverables
 
-- Working Ubuntu Desktop
+- Working Desktop

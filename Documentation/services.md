@@ -93,3 +93,6 @@
 - **Paperless‑ngx** – Document scanning and OCR.
 - **WireGuard** – Traditional VPN server (alternative to Tailscale).
 - **ConvertX** – Web‑based file converter.
+
+
+See [Open Source Alternatives to Popular Software](https://openalternative.co/) for more ideas
