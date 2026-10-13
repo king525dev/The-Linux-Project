@@ -4,7 +4,7 @@ project: The Linux Project
 status: done
 start: 2026-05-24
 end: 2026-06-24
-active: "true"
+active: "false"
 ---
 ```button
 name Sync Sprint To Calendar

@@ -5,7 +5,7 @@ _for [[The Linux Project]], [[index|docs]]_
 - **Open Media Vault** - **NAS** - connect HDDs/SSDs via USB3.0 ports and enjoy average 100MB/s over LAN when copying files (USB 2.0 up to 30MB/s)
 - **Jellyfin** -  Jellyfin is a free and open-source media server software that allows users to manage and stream their media collections to various devices. Configured to watch all downloaded files via **Qbittorrent (!)** on your device.
 - **Home Assistant** - Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.
-- **Qbittorrent -** no need to explain - please make sure you are using VPN - when your movie is downloaded you can now watch it via JELLYFIN or/and PLEX
+- **Qbittorrent -** no need to explain - please make sure you are using VPN - when your movie is downloaded you can now watch it via JELLYFIN or/and PLEX or emule
 - **Homarr** - Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of your apps and services at your fingertips. With Homarr, you can access and control everything in one convenient location.
 
 
@@ -30,3 +30,19 @@ PLEASE NOTE:  If you wish to use ADGUARD you need to go to: omvdell.local:3000
     Portainer is a container management software designed to simplify the deployment, troubleshooting, and security of applications across various environments, including cloud, data center, and Industrial IoT use cases. It provides a user-friendly graphical interface (GUI) for managing containers, making it accessible to developers and non-technical users alike.
 
 Please note: eBay now manage all aspects of delivery on this listing under there new ‘Simple Delivery’ policy. This is totally out of our control & any issues with delivery should be directed at eBay. We appreciate your understanding.
+
+
+The Workload (Currently migrating to local K8s):
+
+* Infra & Security: Authentik (SSO), Vaultwarden, Homebox.
+
+* Cloud & Comms: Nextcloud, Immich, Matrix, and Mailu (yes, I self-host my own email).
+
+* Dev & CI/CD: Gitea + CI/CD workers for my custom open-source OS project.
+
+* Media & Home: Jellyfin, Jellyseerr, Navidrome, Home Assistant.
+
+* Tools & Monitoring: Grafana, Uptime Kuma, LibreChat, SearXNG, Kimai.
+* https://audiobookshelf.org/, https://seerr.dev/, https://github.com/baairon/torlink, https://invidious.io/, usenet to get movies/media
+
+
